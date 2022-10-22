@@ -1,0 +1,40 @@
+{
+  "name": "zeroseven/local-fonts",
+  "license": "GPL-2.0-only",
+  "type": "typo3-cms-extension",
+  "description": "Load google fonts locally",
+  "authors": [
+    {
+      "name": "zeroseven design studios GmbH",
+      "email": "typo3@zeroseven.de",
+      "homepage": "https://www.zeroseven.de/",
+      "role": "Company"
+    },
+    {
+      "name": "Raphael Thanner",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "^10.4 || ^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zeroseven\\LocalFonts\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "local_fonts"
+    }
+  },
+  "scripts": {
+    "prepare-release": [
+      "rm .editorconfig",
+      "rm .gitattributes",
+      "rm .gitignore",
+      "rm .gitlab-ci.yml",
+      "rm -rf .github"
+    ]
+  }
+}
