@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Local fonts',
-    'description' => 'Load google fonts locally',
+    'description' => 'Load google fonts and fontawesome locally',
     'category' => 'plugin',
     'author' => 'Raphael Thanner',
     'author_email' => 'r.thanner@zeroseven.de',

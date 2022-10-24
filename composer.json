@@ -2,7 +2,7 @@
   "name": "zeroseven/local-fonts",
   "license": "GPL-2.0-only",
   "type": "typo3-cms-extension",
-  "description": "Load google fonts locally",
+  "description": "Load google fonts and fontawesome locally",
   "authors": [
     {
       "name": "zeroseven design studios GmbH",
