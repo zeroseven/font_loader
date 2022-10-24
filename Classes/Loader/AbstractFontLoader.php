@@ -34,7 +34,9 @@ abstract class AbstractFontLoader implements FontLoaderInterface
 
     private function loadFontsFromCss(string $content, string $baseUrl): string
     {
-        return preg_replace_callback('/url\([\'|\"]?(.*)[\'|\"]?\)/U', function ($matches) use ($baseUrl) {
+        $replacedFonts = [];
+
+        return preg_replace_callback('/url\([\'|\"]?(.*)[\'|\"]?\)/U', function ($matches) use ($baseUrl, &$replacedFonts) {
             $url = $matches[1];
 
             // Relative url
@@ -50,11 +52,20 @@ abstract class AbstractFontLoader implements FontLoaderInterface
 
                 if ($this->writeFile($fileName, $content)) {
                     $url = PathUtility::getAbsoluteWebPath($fileName);
+                    $replacedFonts[] = $absoluteUrl;
                 }
             }
 
             return sprintf('url("%s")', $url);
-        }, $content);
+        }, $content)
+
+        // Add css file to sources
+        . sprintf("\n\n/* Sources: */\n/* @see %s [styles] */", $baseUrl)
+
+        // List fonts to sources
+        . (empty($replacedFonts) ? '' : implode('', array_map(static function ($replacedFont) {
+            return sprintf("\n/* @see %s [font] */", $replacedFont);
+        }, $replacedFonts)));
     }
 
     private function getFilePath(string $url, string $extensionFallback = ''): ?string
