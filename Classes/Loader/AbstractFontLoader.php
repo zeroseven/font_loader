@@ -12,6 +12,15 @@ use TYPO3\CMS\Core\Utility\PathUtility;
 
 abstract class AbstractFontLoader implements FontLoaderInterface
 {
+    protected function cleanFileName(string $filename): string
+    {
+        if ($index = (strpos($filename, '?') ?: strpos($filename, '#'))) {
+            return substr($filename, 0, $index);
+        }
+
+        return $filename;
+    }
+
     protected function writeFile(string $path, string $content): bool
     {
         if (file_put_contents($path, $content) !== false) {
@@ -28,12 +37,16 @@ abstract class AbstractFontLoader implements FontLoaderInterface
         return preg_replace_callback('/url\([\'|\"]?(.*)[\'|\"]?\)/U', function ($matches) use ($baseUrl) {
             $url = $matches[1];
 
-            if (preg_match('/^\/[^\/]/', $url)) {
-                $url = $baseUrl . $url;
+            // Relative url
+            if (!preg_match('/^(https?:)?\/\//', $url)) {
+                $absoluteUrl = PathUtility::getCanonicalPath(PathUtility::sanitizeTrailingSeparator(pathinfo($baseUrl, PATHINFO_DIRNAME)) . $url);
+            } else {
+                $absoluteUrl = $url;
             }
 
-            if ($content = GeneralUtility::getUrl($url)) {
-                $fileName = $this->getFilePath($url);
+            // Load content
+            if ($content = GeneralUtility::getUrl($absoluteUrl)) {
+                $fileName = $this->getFilePath($absoluteUrl);
 
                 if ($this->writeFile($fileName, $content)) {
                     $url = PathUtility::getAbsoluteWebPath($fileName);
@@ -52,7 +65,7 @@ abstract class AbstractFontLoader implements FontLoaderInterface
             GeneralUtility::mkdir_deep($path);
         }
 
-        return $path . md5($url) . (($extension = (pathinfo($url, PATHINFO_EXTENSION)) ?: $extensionFallback) ? '.' . $extension : '´');
+        return $path . md5($url) . (($extension = (pathinfo($this->cleanFileName($url), PATHINFO_EXTENSION)) ?: $extensionFallback) ? '.' . $extension : '');
     }
 
     public function load(string $url): string
