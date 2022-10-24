@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Zeroseven\LocalFonts\Loader;
 
+use ReflectionClass;
+use ReflectionException;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
@@ -69,7 +71,10 @@ abstract class AbstractFontLoader implements FontLoaderInterface
     public static function registerLoader(string $className): void
     {
         if (GeneralUtility::makeInstance($className) instanceof FontLoaderInterface) {
-            $GLOBALS['TYPO3_CONF_VARS']['USER']['zeroseven/local-fonts'][] = $className;
+            try {
+                $GLOBALS['TYPO3_CONF_VARS']['USER']['zeroseven/local-fonts'][(new ReflectionClass($className))->getShortName()] = $className;
+            } catch (ReflectionException $e) {
+            }
         }
     }
 }
