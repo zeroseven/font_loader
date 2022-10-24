@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Local fonts',
-    'description' => 'Load google fonts and fontawesome locally',
+    'title' => 'Font loader',
+    'description' => 'Load Google Fonts and Fontawesome to share from your TYPO3',
     'category' => 'plugin',
     'author' => 'Raphael Thanner',
     'author_email' => 'r.thanner@zeroseven.de',

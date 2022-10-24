@@ -1,1 +1,1 @@
-# Local fonts
+# Font loader for TYPO3

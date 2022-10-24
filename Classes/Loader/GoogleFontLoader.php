@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zeroseven\LocalFonts\Loader;
+namespace Zeroseven\FontLoader\Loader;
 
 class GoogleFontLoader extends AbstractFontLoader
 {

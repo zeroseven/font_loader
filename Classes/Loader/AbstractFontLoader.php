@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zeroseven\LocalFonts\Loader;
+namespace Zeroseven\FontLoader\Loader;
 
 use ReflectionClass;
 use ReflectionException;
@@ -70,7 +70,7 @@ abstract class AbstractFontLoader implements FontLoaderInterface
 
     private function getFilePath(string $url, string $extensionFallback = ''): ?string
     {
-        $path = sprintf('%s/typo3temp/zeroseven/local_fonts/', Environment::getPublicPath());
+        $path = sprintf('%s/typo3temp/zeroseven/font_loader/', Environment::getPublicPath());
 
         if (!is_dir($path)) {
             GeneralUtility::mkdir_deep($path);
@@ -96,7 +96,7 @@ abstract class AbstractFontLoader implements FontLoaderInterface
     {
         if (GeneralUtility::makeInstance($className) instanceof FontLoaderInterface) {
             try {
-                $GLOBALS['TYPO3_CONF_VARS']['USER']['zeroseven/local-fonts'][(new ReflectionClass($className))->getShortName()] = $className;
+                $GLOBALS['TYPO3_CONF_VARS']['USER']['zeroseven/font-loader'][(new ReflectionClass($className))->getShortName()] = $className;
             } catch (ReflectionException $e) {
             }
         }

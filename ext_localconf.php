@@ -3,7 +3,7 @@
 defined('TYPO3') || die('🅛🅞🅒🅐🅛🅕🅞🅝🅣🅢');
 
 call_user_func(static function () {
-    \Zeroseven\LocalFonts\Hooks\PageRendererHook::register();
-    \Zeroseven\LocalFonts\Loader\GoogleFontLoader::register();
-    \Zeroseven\LocalFonts\Loader\FontAwesomeLoader::register();
+    \Zeroseven\FontLoader\Hooks\PageRendererHook::register();
+    \Zeroseven\FontLoader\Loader\GoogleFontLoader::register();
+    \Zeroseven\FontLoader\Loader\FontAwesomeLoader::register();
 });

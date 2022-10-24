@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zeroseven\LocalFonts\Loader;
+namespace Zeroseven\FontLoader\Loader;
 
 class FontAwesomeLoader extends AbstractFontLoader
 {

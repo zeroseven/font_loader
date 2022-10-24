@@ -1,8 +1,8 @@
 {
-  "name": "zeroseven/local-fonts",
+  "name": "zeroseven/font-loader",
   "license": "GPL-2.0-only",
   "type": "typo3-cms-extension",
-  "description": "Load google fonts and fontawesome locally",
+  "description": "Load Google Fonts and Fontawesome to share from your TYPO3",
   "authors": [
     {
       "name": "zeroseven design studios GmbH",
@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Zeroseven\\LocalFonts\\": "Classes"
+      "Zeroseven\\FontLoader\\": "Classes"
     }
   },
   "extra": {
     "typo3/cms": {
-      "extension-key": "local_fonts"
+      "extension-key": "font_loader"
     }
   },
   "scripts": {
