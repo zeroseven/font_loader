@@ -1,1 +1,6 @@
 # Font loader for TYPO3
+
+|             | **HTML** | **CSS** |
+|-------------|----------|---------|
+| **Before**  | <pre>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&nbsp;&nbsp;&lt;title&gt;Website&lt;/title&gt;<br>&nbsp;&nbsp;&lt;link href="<span style='color:#e74c3c'><span>https://</span>fonts.googleapis.com/css?family=roboto</span>" rel="stylesheet" type="text/css"&gt;<br>&lt;/head&gt;</pre> | <pre>@font-face {<br>&nbsp;&nbsp;font-family: 'Roboto';<br>&nbsp;&nbsp;font-style: normal;<br>&nbsp;&nbsp;font-weight: 400;<br>&nbsp;&nbsp;src: url("<span style='color:#e74c3c'><span>https://</span>fonts.gstatic.com/s/v3/x3dkc4PPZa6L4wIg5cZOEsoBly4.ttf</span>") format('truetype');<br>}</pre> |
+| **After**   | <pre>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&nbsp;&nbsp;&lt;title&gt;Website&lt;/title&gt;<br>&nbsp;&nbsp;&lt;link href="<span style='color:#2ecc71'>/typo3temp/zeroseven/local_fonts/e487a6484.css</span>" rel="stylesheet" type="text/css"&gt;<br>&lt;/head&gt;</pre> | <pre>@font-face {<br>&nbsp;&nbsp;font-family: 'Roboto';<br>&nbsp;&nbsp;font-style: normal;<br>&nbsp;&nbsp;font-weight: 400;<br>&nbsp;&nbsp;src: url("<span style='color:#2ecc71'>/typo3temp/zeroseven/local_fonts/329272c5cc2f278d6e1b30c77.ttf</span>") format('truetype');<br>}</pre> |
