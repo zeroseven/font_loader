@@ -32,7 +32,6 @@
     "prepare-release": [
       "rm .editorconfig",
       "rm .gitattributes",
-      "rm .gitignore",
       "rm .gitlab-ci.yml",
       "rm -rf .github"
     ]
