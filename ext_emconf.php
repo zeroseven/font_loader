@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Font loader',
+    'title' => 'Font Loader',
     'description' => 'With this extension external fonts can be loaded directly into your TYPO3 ecosystem and will be delivered from your local webserver',
     'category' => 'plugin',
     'author' => 'Raphael Thanner',
