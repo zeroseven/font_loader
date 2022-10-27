@@ -2,7 +2,7 @@
   "name": "zeroseven/font-loader",
   "license": "GPL-2.0-only",
   "type": "typo3-cms-extension",
-  "description": "Load Google Fonts and Fontawesome to share from your TYPO3",
+  "description": "With this extension external fonts can be loaded directly into your TYPO3 ecosystem and will be delivered from your local webserver",
   "authors": [
     {
       "name": "zeroseven design studios GmbH",
